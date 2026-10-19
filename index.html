@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>MailPilot | Outlook Email Search Alternative</title>
+  <meta name="description" content="Having trouble finding emails in Outlook? Learn troubleshooting steps for Outlook Search and explore MailPilot as an alternative email search solution.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mailpilot-website.pages.dev/">
+
+  <meta property="og:title" content="MailPilot - Find Your Emails">
+  <meta property="og:description" content="Troubleshoot Outlook Search and explore an alternative approach to email search.">
+  <meta property="og:type" content="website">
+
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #14243b;
+      --blue: #2764e7;
+      --muted: #58677c;
+      --bg: #f5f8ff;
+      --border: #e1e7f0;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--navy);
+      line-height: 1.7;
+      background: white;
+    }
+    a { color: var(--blue); }
+    .container { width: min(1080px, 92%); margin: auto; }
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { font-size: 25px; font-weight: 800; color: var(--navy); }
+    nav a { text-decoration: none; font-weight: 600; }
+    .hero {
+      padding: 85px 0;
+      background: linear-gradient(135deg, #edf3ff, #fff);
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.12;
+      max-width: 800px;
+      margin: 15px 0;
+      letter-spacing: -1.5px;
+    }
+    .hero p { font-size: 19px; max-width: 720px; color: var(--muted); }
+    .button {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      margin: 10px 8px 0 0;
+    }
+    .button.secondary {
+      background: white;
+      color: var(--blue);
+      border: 1px solid var(--border);
+    }
+    section { padding: 55px 0; }
+    h2 { font-size: clamp(27px, 4vw, 36px); line-height: 1.25; }
+    h3 { margin-bottom: 8px; }
+    .muted { color: var(--muted); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      padding: 23px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: white;
+    }
+    .highlight { background: var(--bg); }
+    .notice {
+      background: #fff8e8;
+      border-left: 4px solid #e7a526;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    footer {
+      padding: 30px 0;
+      background: #f5f7fb;
+      border-top: 1px solid var(--border);
+    }
+    footer a { margin-right: 16px; }
+    @media (max-width: 600px) {
+      .hero { padding: 55px 0; }
+      nav { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="/">MailPilot</a>
+      <a href="#troubleshooting">Outlook Search Help</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p><strong>Email productivity and search</strong></p>
+        <h1>Outlook Email Search Not Working?</h1>
+        <p>
+          Can't find emails in Outlook? Start with practical troubleshooting
+          steps for missing results, indexing problems and older messages.
+          Then explore MailPilot as a potential alternative.
+        </p>
+        <a class="button" href="#troubleshooting">Fix Outlook Search</a>
+        <a class="button secondary" href="#mailpilot">Explore MailPilot</a>
+      </div>
+    </section>
+
+    <section id="troubleshooting">
+      <div class="container">
+        <h2>How to Fix Outlook Search Problems</h2>
+        <p class="muted">
+          Try these checks before changing your email configuration.
+          Menu names can vary by Outlook version.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <h3>1. Check your search query</h3>
+            <p>Search for a distinctive sender, subject phrase or email
+              address. Remove restrictive filters and try again.</p>
+          </article>
+          <article class="card">
+            <h3>2. Check Outlook indexing</h3>
+            <p>In classic Outlook for Windows, open Search Tools and
+              Indexing Status, where available. Allow indexing to finish.</p>
+          </article>
+          <article class="card">
+            <h3>3. Check the selected mailbox</h3>
+            <p>Make sure the search scope includes the mailbox or folder
+              where the missing message is stored.</p>
+          </article>
+          <article class="card">
+            <h3>4. Check for updates</h3>
+            <p>Install available Office updates and restart Outlook.
+              Record any error message before trying advanced repairs.</p>
+          </article>
+        </div>
+
+        <p class="notice">
+          <strong>Important:</strong> Before rebuilding an index or repairing
+          Outlook, back up important data and follow the instructions for
+          your specific Outlook version. New Outlook and classic Outlook
+          do not use identical search workflows.
+        </p>
+      </div>
+    </section>
+
+    <section class="highlight" id="mailpilot">
+      <div class="container">
+        <h2>Meet MailPilot</h2>
+        <p>
+          Looking for another way to search your email? MailPilot is being
+          presented here as an email search solution. Review its actual
+          supported accounts, features and requirements before installing.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <h3>Search approach</h3>
+            <p>Where supported, an independent local index can reduce
+              reliance on Windows Search for indexed messages.</p>
+          </article>
+          <article class="card">
+            <h3>Check compatibility</h3>
+            <p>Confirm supported Outlook versions, account types,
+              indexing behaviour and setup requirements.</p>
+          </article>
+        </div>
+
+        <p class="muted">
+          Product capabilities and compatibility must be confirmed against
+          the current MailPilot release.
+        </p>
+
+        <!-- Add the verified Microsoft Store URL when confirmed. -->
+        <a class="button" href="mailto:REPLACE-WITH-YOUR-SUPPORT-EMAIL">
+          Contact MailPilot
+        </a>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+
+        <article class="card">
+          <h3>Why is Outlook Search returning no results?</h3>
+          <p>Possible causes include search scope, incomplete indexing,
+            filters, account synchronisation or an Outlook issue.</p>
+        </article>
+
+        <article class="card" style="margin-top:15px">
+          <h3>Can I search email without Windows Search?</h3>
+          <p>Some applications maintain their own local email index.
+            Check whether the application supports your account type and
+            has finished indexing the relevant messages.</p>
+        </article>
+
+        <article class="card" style="margin-top:15px">
+          <h3>Will MailPilot find every email automatically?</h3>
+          <p>No search application should be assumed to find every message.
+            Results depend on supported accounts, indexed data and
+            synchronisation status.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>MailPilot</strong>
+      <p class="muted">Email search and productivity software.</p>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:REPLACE-WITH-YOUR-SUPPORT-EMAIL">Contact</a>
+      <p class="muted">
+        Outlook is a Microsoft product. This website is not affiliated
+        with or endorsed by Microsoft.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
