@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mailpilot-website.pages.dev/sitemap.xml
