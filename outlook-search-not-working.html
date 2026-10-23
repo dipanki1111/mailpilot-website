@@ -8,6 +8,102 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://mailpilot-website.pages.dev/outlook-search-not-working.html">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+:root {
+  --navy: #12305a;
+  --blue: #1768ac;
+  --text: #263449;
+  --muted: #58677c;
+  --background: #f5f8fc;
+  --border: #dce5f0;
+  --white: #ffffff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background: var(--background);
+  font-size: 16px;
+  line-height: 1.75;
+}
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 24px 36px;
+}
+header > a {
+  display: inline-block;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 22px;
+  text-decoration: none;
+  margin-bottom: 24px;
+}
+header h1 {
+  max-width: 900px;
+  margin: 0 auto 12px;
+  color: var(--navy);
+  font-size: clamp(30px, 5vw, 44px);
+  line-height: 1.2;
+}
+header p {
+  max-width: 900px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 18px;
+}
+main {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 0 20px;
+}
+nav, section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 22px;
+  box-shadow: 0 3px 12px rgba(18, 48, 90, 0.04);
+}
+h2 {
+  color: var(--navy);
+  font-size: 25px;
+  line-height: 1.35;
+  margin: 0 0 16px;
+}
+h3 {
+  color: var(--navy);
+  font-size: 19px;
+  margin: 22px 0 8px;
+}
+p { margin: 12px 0; }
+ul, ol { padding-left: 24px; }
+li { margin: 8px 0; }
+a { color: var(--blue); }
+a:hover { color: var(--navy); }
+a:focus-visible {
+  outline: 3px solid #80bfff;
+  outline-offset: 3px;
+}
+code {
+  background: #edf3fa;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 24px 12px;
+}
+@media (max-width: 600px) {
+  header { padding: 22px 18px 28px; }
+  main { margin: 20px auto; padding: 0 12px; }
+  nav, section { padding: 20px 18px; }
+  h2 { font-size: 22px; }
+}
+</style>
 </head>
 <body>
   <header>
