@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>MailPilot Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for MailPilot and the MailPilot website. Learn about our local-first email search approach, data handling, and privacy commitments.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mailpilot-website.pages.dev/privacy.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:title" content="MailPilot Privacy Policy">
+  <meta property="og:description" content="Privacy Policy for MailPilot and the MailPilot website. Learn about our local-first email search approach and data practices.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mailpilot-website.pages.dev/privacy.html">
+
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #14243b;
+      --blue: #2764e7;
+      --blue-hover: #1b4ec2;
+      --muted: #58677c;
+      --bg: #f5f8ff;
+      --border: #e1e7f0;
+      --card-bg: #ffffff;
+      --notice-bg: #fff8e8;
+      --notice-border: #e7a526;
+      --notice-text: #744210;
+      --pending-bg: #fef3c7;
+      --pending-border: #f59e0b;
+      --pending-text: #92400e;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--navy);
+      line-height: 1.7;
+      background: #fafcff;
+    }
+    a { color: var(--blue); }
+    a:hover { color: var(--blue-hover); }
+    .container { width: min(1080px, 92%); margin: auto; }
+    .content-container { width: min(840px, 92%); margin: auto; }
+
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      background: #ffffff;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      font-size: 25px;
+      font-weight: 800;
+      color: var(--navy);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .hero {
+      padding: 55px 0 35px;
+      background: linear-gradient(135deg, #edf3ff, #fff);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-tag {
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.15;
+      margin: 10px 0 14px;
+      letter-spacing: -1px;
+    }
+    .hero-meta {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    main {
+      padding: 40px 0 60px;
+    }
+
+    .policy-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(20, 36, 59, 0.03);
+    }
+    .policy-section h2 {
+      font-size: 22px;
+      line-height: 1.3;
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--navy);
+      border-bottom: 1px solid #f0f4fa;
+      padding-bottom: 10px;
+    }
+    .policy-section h3 {
+      font-size: 17px;
+      margin: 20px 0 8px;
+      color: var(--navy);
+    }
+    .policy-section p {
+      margin: 12px 0;
+    }
+    .policy-section ul, .policy-section ol {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    .policy-section li {
+      margin-bottom: 8px;
+    }
+
+    .notice-box {
+      background: var(--notice-bg);
+      border-left: 4px solid var(--notice-border);
+      color: var(--notice-text);
+      padding: 18px 22px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .notice-box strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .pending-confirmation {
+      background: var(--pending-bg);
+      border-left: 3px solid var(--pending-border);
+      color: var(--pending-text);
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin: 12px 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .pending-confirmation strong {
+      font-weight: 700;
+    }
+
+    .contact-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-top: 14px;
+    }
+    .contact-card p {
+      margin: 6px 0;
+    }
+
+    footer {
+      padding: 35px 0;
+      background: #f5f7fb;
+      border-top: 1px solid var(--border);
+    }
+    footer strong {
+      font-size: 18px;
+    }
+    footer a {
+      margin-right: 18px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 10px 0;
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 0 25px; }
+      nav { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .nav-links { gap: 14px; }
+      .policy-section { padding: 20px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="/">MailPilot</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/outlook-search-not-working.html">Outlook Search Help</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="content-container">
+      <div class="hero-tag">Privacy &amp; Data Practices</div>
+      <h1>MailPilot Privacy Policy</h1>
+      <p class="hero-meta"><strong>Last Updated:</strong> October 28, 2026 &nbsp;|&nbsp; <strong>Effective Date:</strong> October 28, 2026</p>
+      <p class="muted">
+        This Privacy Policy explains how MailPilot handles information through our website and email productivity application.
+      </p>
+    </div>
+  </div>
+
+  <main>
+    <div class="content-container">
+
+      <div class="notice-box">
+        <strong>Transparency &amp; Architecture Commitment</strong>
+        This Privacy Policy reflects the verified technical architecture and implementation of the MailPilot desktop application and website. We are committed to complete transparency regarding local data handling, storage boundaries, and privacy protections.
+      </div>
+
+      <!-- 1. Scope and Introduction -->
+      <section class="policy-section" id="scope">
+        <h2>1. Scope and Introduction</h2>
+        <p>
+          This Privacy Policy applies to the MailPilot website (hosted at <code>https://mailpilot-website.pages.dev/</code>) and the MailPilot desktop application distributed through the Microsoft Store.
+        </p>
+        <p>
+          MailPilot is designed as an email productivity and search tool built on a local-first principle. We respect individual privacy and are committed to clear, truthful communication regarding our technical data practices.
+        </p>
+      </section>
+
+      <!-- 2. Information Collected and How It Is Used -->
+      <section class="policy-section" id="information-collected">
+        <h2>2. Information Collected and How It Is Used</h2>
+        <p>
+          We differentiate between information associated with browsing our informational website and information involved when using the MailPilot desktop software.
+        </p>
+
+        <h3>A. Website Visitors</h3>
+        <p>
+          Our website serves purely informational purposes. You can browse our website without creating an account or providing direct personal identifiers.
+        </p>
+        <ul>
+          <li><strong>No Tracking Scripts or Cookies:</strong> The static website source code contains no tracking scripts, advertising pixels, or analytics cookies.</li>
+          <li><strong>Technical Infrastructure Logs:</strong> Like most web hosting platforms, our hosting provider (Cloudflare Pages) processes standard technical transit information (such as IP addresses, browser types, operating systems, referring URLs, and access timestamps) to deliver web pages securely and mitigate malicious traffic. Infrastructure-level network metrics may be processed by Cloudflare in accordance with their privacy practices.</li>
+        </ul>
+
+        <h3>B. MailPilot Application Diagnostics &amp; Telemetry</h3>
+        <p>
+          The MailPilot desktop application is designed to operate locally on your computer:
+        </p>
+        <ul>
+          <li><strong>No Telemetry or Analytics SDKs:</strong> The application contains no first-party or third-party telemetry frameworks, user tracking SDKs, feature analytics, or remote crash-reporting SDKs.</li>
+          <li><strong>Local Diagnostic Logging:</strong> Diagnostic messages and error logs generated during email indexing are written strictly to a local text file on your machine at <code>%LocalAppData%\MailPilot\rebuild_debug.log</code>. These logs are stored solely on your computer and are never automatically transmitted over the network.</li>
+          <li><strong>Microsoft Store Platform Telemetry:</strong> Because MailPilot is distributed through the Microsoft Store, installation delivery, update downloads, and OS-level platform crash diagnostics are managed independently by Windows under the <a href="https://privacy.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft Privacy Statement</a>. These platform services are not controlled by MailPilot.</li>
+        </ul>
+      </section>
+
+      <!-- 3. Local Storage, Email Processing, and Outlook Connectivity -->
+      <section class="policy-section" id="local-storage">
+        <h2>3. Local Storage, Email Processing, and Outlook Connectivity</h2>
+        <p>
+          MailPilot operates on a local-first architecture. All indexing, data storage, and search evaluation happen directly on your personal computer:
+        </p>
+
+        <h3>A. Local Indexing and Search Execution</h3>
+        <ul>
+          <li><strong>Local SQLite Database:</strong> MailPilot creates and maintains an independent search index stored in a local SQLite database file located at <code>%LocalAppData%\MailPilot\MailPilot.db</code>.</li>
+          <li><strong>Data Stored Locally:</strong> To enable fast searching without relying on Windows Search, this database stores indexed email subjects, sender and recipient information, message dates, folder locations, flags, read statuses, preview snippets, full message body text, user preferences, and your recent search query history.</li>
+          <li><strong>No Cloud Transmission of Email Data:</strong> All search queries, filter evaluations, and text matches are performed locally on your device against your local SQLite database. No email bodies, headers, recipient lists, or search query strings are transmitted to remote servers, external APIs, or cloud services.</li>
+          <li><strong>Temporary Opened Attachments:</strong> When you choose to open an email attachment from the preview pane, the attachment is temporarily saved locally to <code>%TEMP%\MailPilot\</code> so that your default Windows application can display it.</li>
+        </ul>
+
+        <h3>B. HTML Email Preview and Remote Content</h3>
+        <p>
+          When you select an email to view its full content, MailPilot displays the message body using Microsoft WebView2:
+        </p>
+        <ul>
+          <li><strong>Local Message Rendering:</strong> The email body is passed directly from your local database or Outlook session into the local WebView2 rendering component. MailPilot does not route or proxy message content through any intermediary servers.</li>
+          <li><strong>Sender-Embedded Remote Resources:</strong> If an incoming HTML email contains links to external images, web fonts, or tracking pixels embedded by the original email sender, the WebView2 component may load those external resources directly from the sender's third-party web servers over your internet connection unless blocked by your firewall or network security tools. MailPilot does not claim that no network request can ever occur during HTML preview rendering.</li>
+        </ul>
+
+        <h3>C. Outlook Authentication and Account Access</h3>
+        <ul>
+          <li><strong>Classic Outlook COM / MAPI Connection:</strong> MailPilot connects exclusively to the local Classic Microsoft Outlook desktop client via Windows Component Object Model (COM) and the MAPI subsystem.</li>
+          <li><strong>No Password or Token Storage:</strong> MailPilot relies entirely on your active, locally authenticated Classic Outlook profile. The application does not request, collect, transmit, or store email account passwords, OAuth tokens, or login credentials.</li>
+          <li><strong>Desktop Client Requirement:</strong> MailPilot requires Classic Microsoft Outlook desktop and does not support the web-based New Outlook for Windows.</li>
+        </ul>
+      </section>
+
+      <!-- 4. Third-Party Services and External Links -->
+      <section class="policy-section" id="third-party">
+        <h2>4. Third-Party Services and External Links</h2>
+        <p>
+          MailPilot interacts with the following third-party platforms and software libraries:
+        </p>
+
+        <h3>A. Distribution, Hosting, and Support</h3>
+        <ul>
+          <li><strong>Microsoft Store:</strong> The desktop application is distributed through the Microsoft Store. Installations, updates, and platform telemetry collected by Microsoft are governed by the <a href="https://privacy.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft Privacy Statement</a>.</li>
+          <li><strong>Cloudflare Pages:</strong> Our informational website is hosted on Cloudflare Pages. Network transit and edge security operations are subject to the <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a>.</li>
+          <li><strong>Google Workspace / Gmail:</strong> Support correspondence sent to our support email address is processed through Google Workspace / Gmail services.</li>
+          <li><strong>External Links:</strong> Our website contains links to third-party documentation (such as Microsoft help resources). We are not responsible for the privacy practices or content of external websites.</li>
+        </ul>
+
+        <h3>B. Application Libraries &amp; Frameworks</h3>
+        <p>
+          MailPilot incorporates standard, open-source and Microsoft development libraries to provide user interface, database, and local integration capabilities:
+        </p>
+        <ul>
+          <li><strong>Core Developer Libraries:</strong> Includes Microsoft .NET runtime libraries, <code>Microsoft.Data.Sqlite</code> (for local SQLite database operations), <code>CommunityToolkit.Mvvm</code> (for UI architecture), <code>MaterialDesignThemes</code> (for visual styling), and <code>Microsoft.Web.WebView2</code> (for local HTML rendering).</li>
+          <li><strong>No Tracking SDKs:</strong> The application contains no advertising SDKs, commercial tracking frameworks, third-party analytics packages, or behavioral monitoring tools.</li>
+        </ul>
+      </section>
+
+      <!-- 5. Data Retention, Deletion, and Uninstall Lifecycle -->
+      <section class="policy-section" id="retention-deletion">
+        <h2>5. Data Retention, Deletion, and Uninstall Lifecycle</h2>
+        <p>
+          Because MailPilot stores data locally, you maintain control over your stored information:
+        </p>
+
+        <h3>A. In-App History Management</h3>
+        <ul>
+          <li><strong>Search History:</strong> You can clear individual previous searches or wipe your entire recent search history at any time using the <em>Clear</em> button in the Recent Searches panel.</li>
+          <li><strong>Index Rebuilds:</strong> The in-app <em>Rebuild Index</em> option re-reads emails from Outlook and updates your existing database records, but it does not delete or reset the underlying database file.</li>
+        </ul>
+
+        <h3>B. Deleting the Local Index and Application Data</h3>
+        <p>
+          The application does not include an automated in-app "Clear Index" or "Delete Database" button. To completely delete the local search index, preferences, and diagnostic logs:
+        </p>
+        <ol>
+          <li>Close and exit the MailPilot application completely.</li>
+          <li>Open Windows File Explorer and navigate to your local application data folder:
+            <br>
+            <code>%LocalAppData%\MailPilot\</code> (typically <code>C:\Users\&lt;YourUsername&gt;\AppData\Local\MailPilot\</code>)
+          </li>
+          <li>Delete the <code>MailPilot.db</code> file (or delete the entire <code>MailPilot</code> folder).</li>
+          <li>Optionally, clear temporary attachment files by deleting any files inside <code>%TEMP%\MailPilot\</code>.</li>
+        </ol>
+        <p>
+          <strong>Warning:</strong> Deleting the <code>%LocalAppData%\MailPilot\</code> folder permanently removes your local MailPilot search index, saved search history, custom application preferences, and local debug logs. It will <em>not</em> delete, alter, or remove your original emails, folders, or mailboxes in Microsoft Outlook or on your email server.
+        </p>
+
+        <h3>C. What Happens When You Uninstall MailPilot</h3>
+        <p>
+          Uninstalling MailPilot via Windows Settings or the Microsoft Store removes the application executable and package assets. However, standard Windows package uninstallation does not automatically delete unvirtualized user data files located in <code>%LocalAppData%\MailPilot\</code>.
+        </p>
+        <p>
+          If you wish to remove all local traces of MailPilot from your computer upon uninstallation, please perform the manual folder deletion steps described above.
+        </p>
+
+        <h3>D. Support Communications Retention</h3>
+        <p>
+          If you contact us via email, we retain your message and email address only as long as necessary to answer your inquiry and maintain support history. You may request deletion of past support correspondence at any time by contacting us.
+        </p>
+      </section>
+
+      <!-- 6. Security and Encryption -->
+      <section class="policy-section" id="security">
+        <h2>6. Security and Encryption</h2>
+        <p>
+          We prioritize data privacy through local containment and clear architectural boundaries:
+        </p>
+        <ul>
+          <li><strong>Local Data Boundary:</strong> By indexing and processing email data locally on your computer, your messages and search terms are not routed through external application servers.</li>
+          <li><strong>Database Encryption Status:</strong> The local SQLite database file (<code>MailPilot.db</code>) is <strong>not encrypted</strong> at the application level by MailPilot. Data at rest is protected by Windows operating system user account access controls (NTFS permissions), which restrict file access to your Windows user profile.</li>
+          <li><strong>Device-Level Encryption:</strong> Additional protection at rest depends on whether device-level or volume encryption (such as Windows BitLocker or hardware device encryption) is enabled on your computer. MailPilot does not manage device-level encryption, and encryption is not enabled by default on all Windows systems.</li>
+          <li><strong>Website Transport:</strong> All communication between your browser and our informational website is encrypted via modern HTTPS.</li>
+        </ul>
+      </section>
+
+      <!-- 7. Children's Privacy -->
+      <section class="policy-section" id="children">
+        <h2>7. Children's Privacy</h2>
+        <p>
+          MailPilot and this website are intended for general audience productivity and professional use. We do not knowingly collect, store, or solicit personal information from children under the age of 13 (or under the applicable age of digital consent in your jurisdiction).
+        </p>
+      </section>
+
+      <!-- 8. Policy Updates -->
+      <section class="policy-section" id="updates">
+        <h2>8. Policy Updates</h2>
+        <p>
+          We may update this Privacy Policy periodically to reflect changes in our software, user feedback, or legal obligations.
+        </p>
+        <p>
+          When changes are made, the revised policy will be posted on this page with an updated "Last Updated" date at the top. We encourage visitors and users to review this page periodically.
+        </p>
+      </section>
+
+      <!-- 9. Contact Information -->
+      <section class="policy-section" id="contact">
+        <h2>9. Contact Information</h2>
+        <p>
+          If you have questions, comments, or data requests regarding this Privacy Policy or MailPilot, you can reach out to us:
+        </p>
+        <div class="contact-card">
+          <p><strong>Email:</strong> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support.mailpilot%40gmail.com" target="_blank" rel="noopener noreferrer">support.mailpilot@gmail.com</a></p>
+          <p><strong>Website:</strong> <a href="https://mailpilot-website.pages.dev/">https://mailpilot-website.pages.dev/</a></p>
+        </div>
+      </section>
+
+      <!-- Owner Review Note: If MailPilot is formally registered under a corporate entity or requires a physical postal address for specific jurisdictions, update Section 9 accordingly. Currently, user inquiries are directed to support.mailpilot@gmail.com. -->
+
+      <!-- 10. Disclaimer -->
+      <section class="policy-section" id="disclaimer">
+        <h2>10. Microsoft Disclaimer</h2>
+        <p class="muted">
+          Outlook is a registered trademark of Microsoft Corporation. MailPilot is an independent software tool and is not affiliated with, endorsed by, or sponsored by Microsoft.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>MailPilot</strong>
+      <p class="muted">Email search and productivity software.</p>
+      <a href="/">Home</a>
+      <a href="/outlook-search-not-working.html">Outlook Search Help</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support.mailpilot%40gmail.com" target="_blank" rel="noopener noreferrer">Contact Support</a>
+      <p class="muted">
+        Outlook is a Microsoft product. This website is not affiliated with or endorsed by Microsoft.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
