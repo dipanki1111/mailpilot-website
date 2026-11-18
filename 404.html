@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Page Not Found | MailPilot</title>
+  <meta name="description" content="The page you requested could not be found. Return to the MailPilot homepage or explore Outlook search troubleshooting.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #14243b;
+      --blue: #2764e7;
+      --muted: #58677c;
+      --bg: #f5f8ff;
+      --border: #e1e7f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--navy);
+      line-height: 1.7;
+      background: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: var(--blue); }
+    .container { width: min(1080px, 92%); margin: auto; }
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { font-size: 25px; font-weight: 800; color: var(--navy); text-decoration: none; }
+    nav a { text-decoration: none; font-weight: 600; }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+      background: linear-gradient(135deg, #edf3ff, #fff);
+    }
+    .hero {
+      text-align: left;
+      max-width: 680px;
+    }
+    .error-code {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.15;
+      margin: 0 0 16px 0;
+      letter-spacing: -1px;
+      color: var(--navy);
+    }
+    p {
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0 0 28px 0;
+    }
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .button {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .button.secondary {
+      background: white;
+      color: var(--blue);
+      border: 1px solid var(--border);
+    }
+    footer {
+      padding: 30px 0;
+      background: #f5f7fb;
+      border-top: 1px solid var(--border);
+    }
+    footer a { margin-right: 16px; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="/">MailPilot</a>
+      <a href="/">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="hero">
+        <div class="error-code">404 Error</div>
+        <h1>Page Not Found</h1>
+        <p>
+          The page you are looking for doesn't exist, has been removed, or was moved
+          to another web address.
+        </p>
+        <div class="button-group">
+          <a class="button" href="/">Return to Homepage</a>
+          <a class="button secondary" href="/outlook-search-not-working">Outlook Search Guide</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>MailPilot</strong>
+      <p style="color: var(--muted); margin: 6px 0 12px 0;">Email search and productivity software.</p>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/outlook-search-not-working">Outlook Search Help</a>
+      <p style="color: var(--muted); margin: 12px 0 0 0; font-size: 14px;">
+        Outlook is a Microsoft product. This website is not affiliated with or endorsed by Microsoft.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
