@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Outlook Search Not Finding Old Emails? Causes and Fixes</title>
+  <meta name="description" content="Can't find old emails in Outlook? Learn how to adjust Cached Exchange Mode sync sliders, expand search scope, locate PST archives, and repair search indexing.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mailpilot-website.pages.dev/outlook-search-not-finding-old-emails">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:title" content="Outlook Search Not Finding Old Emails? Causes and Fixes">
+  <meta property="og:description" content="Can't find old emails in Outlook? Learn how to adjust Cached Exchange Mode sync sliders, expand search scope, locate PST archives, and repair search indexing.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mailpilot-website.pages.dev/outlook-search-not-finding-old-emails">
+  <meta property="og:image" content="https://mailpilot-website.pages.dev/favicon.svg">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Outlook Search Not Finding Old Emails? Causes and Fixes">
+  <meta name="twitter:description" content="Can't find old emails in Outlook? Learn how to adjust Cached Exchange Mode sync sliders, expand search scope, locate PST archives, and repair search indexing.">
+  <meta name="twitter:image" content="https://mailpilot-website.pages.dev/favicon.svg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why does Outlook only search emails from the past 12 months?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Microsoft Outlook configures Cached Exchange Mode with an offline sync slider to conserve local disk space. On systems with larger drives, Outlook typically defaults to 12 months (1 year), while devices with 64 GB or less often default to 1 to 3 months, and enterprise Group Policy may enforce custom organizational limits. When this setting is active, emails older than the sync window remain on the Exchange or Microsoft 365 server and are not stored in your local OST file. You can search them by clicking 'Click here to view more on Microsoft Exchange' at the bottom of your search results, or by moving the slider to 2 years, 3 years, or All in Account Settings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do archived emails go in Outlook, and can they be searched?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Where archived emails reside depends on the archive method used: 1) The one-click 'Archive' folder is simply a standard folder inside your primary mailbox OST and is subject to your offline sync slider. 2) AutoArchive moves items to a separate local PST file on your hard drive, which must remain opened and mounted in Outlook to appear in searches. 3) Microsoft 365 Online Archive (In-Place Archive) lives entirely in the cloud as a separate mailbox in your folder pane and must be searched specifically or with search scope set to All Outlook Items."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why can't I find old emails in New Outlook for Windows?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "New Outlook for Windows does not use local OST data files or the 'Mail to keep offline' sync slider. Instead, all searches run server-side across Microsoft 365 cloud infrastructure. Missing old emails in New Outlook are usually caused by search folder scope (searching only the current folder instead of All Folders), active search filters, or organizational mailbox retention policies set by your IT administrator that automatically delete or archive older messages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will increasing 'Mail to keep offline' to 'All' slow down my computer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Setting the slider to 'All' instructs Outlook to download your complete mailbox history to your local hard drive. If your mailbox contains tens of thousands of messages or tens of gigabytes of data, initial synchronization and indexing will consume significant disk space, network bandwidth, and background processing power. For mailboxes larger than 25 GB on systems with limited SSD storage, setting the slider to 2 or 3 years often provides an ideal balance between search depth and system performance."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --navy: #12305a;
+      --blue: #1768ac;
+      --blue-hover: #125287;
+      --text: #263449;
+      --muted: #58677c;
+      --background: #f5f8fc;
+      --border: #dce5f0;
+      --white: #ffffff;
+      --warning-bg: #fff8e8;
+      --warning-border: #e7a526;
+      --warning-text: #744210;
+      --callout-bg: #edf5ff;
+      --callout-border: #b8d7ff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      color: var(--text);
+      background: var(--background);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 30px 24px 38px;
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .brand-link {
+      display: inline-block;
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 22px;
+      text-decoration: none;
+      margin-bottom: 16px;
+    }
+    .breadcrumb {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .breadcrumb a:hover { text-decoration: underline; }
+    header h1 {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.22;
+      letter-spacing: -0.5px;
+    }
+    header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    main {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 20px;
+    }
+    nav.toc, section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px 30px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(18, 48, 90, 0.04);
+    }
+    h2 {
+      color: var(--navy);
+      font-size: 24px;
+      line-height: 1.35;
+      margin: 0 0 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+    h3 {
+      color: var(--navy);
+      font-size: 18px;
+      margin: 22px 0 8px;
+    }
+    p { margin: 12px 0; }
+    ul, ol { padding-left: 24px; margin: 12px 0; }
+    li { margin: 8px 0; }
+    a { color: var(--blue); }
+    a:hover { color: var(--blue-hover); }
+    code {
+      background: #eef3f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 14px;
+      color: #1a355e;
+    }
+    .warning-box {
+      background: var(--warning-bg);
+      border-left: 4px solid var(--warning-border);
+      color: var(--warning-text);
+      padding: 16px 18px;
+      border-radius: 6px;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+    .warning-box strong { color: #522e06; }
+    .callout-box {
+      background: var(--callout-bg);
+      border: 1px solid var(--callout-border);
+      padding: 22px 24px;
+      border-radius: 10px;
+      margin: 24px 0;
+    }
+    .callout-box h3 { margin-top: 0; color: var(--navy); }
+    .button {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      padding: 11px 20px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+    .button:hover {
+      background: var(--blue-hover);
+      color: var(--white);
+    }
+    .button.secondary {
+      background: var(--white);
+      color: var(--blue);
+      border: 1px solid var(--border);
+    }
+    .button.secondary:hover {
+      background: #f0f4fa;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 36px 20px;
+      font-size: 14px;
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      margin-top: 48px;
+    }
+    footer a { margin: 0 10px; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      header { padding: 22px 18px; }
+      nav.toc, section { padding: 20px 18px; }
+      h2 { font-size: 21px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a class="brand-link" href="/">MailPilot</a>
+      <div class="breadcrumb">
+        <a href="/">Home</a> &rsaquo;
+        <a href="/outlook-search-not-working">Outlook Search Help</a> &rsaquo;
+        <span>Finding Old Emails</span>
+      </div>
+      <h1>Outlook Search Not Finding Old Emails? Causes and Fixes</h1>
+      <p>
+        When searching Outlook for messages sent months or years ago, missing results are rarely due to deleted emails.
+        Here is how to locate missing messages across sync sliders, search scopes, archive files, and index settings.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <nav class="toc" aria-label="Table of Contents">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#why-old-emails-disappear">1. Why Old Emails Disappear from Outlook Search</a></li>
+        <li><a href="#classic-vs-new">2. Classic Outlook vs New Outlook</a></li>
+        <li><a href="#cached-exchange-mode">3. Check Cached Exchange Mode</a></li>
+        <li><a href="#mail-to-keep-offline">4. Check "Mail to Keep Offline" Slider</a></li>
+        <li><a href="#search-scope">5. Expand Search Scope: "All Mailboxes" and "All Outlook Items"</a></li>
+        <li><a href="#archives-and-pst">6. Check Archive Folders and PST Files</a></li>
+        <li><a href="#verify-indexing">7. Verify Outlook Indexing and Data File Locations</a></li>
+        <li><a href="#alternative-search">8. When an Alternative Desktop Search Tool May Help</a></li>
+        <li><a href="#faq">9. Frequently Asked Questions</a></li>
+      </ul>
+    </nav>
+
+    <!-- Section 1 -->
+    <section id="why-old-emails-disappear">
+      <h2>1. Why Old Emails Disappear from Outlook Search</h2>
+      <p>
+        Typing an important client name, invoice number, or project keyword into Outlook only to receive
+        <em>"No results found"</em> can be alarming. Many users assume their older emails were accidentally deleted,
+        corrupted during an update, or lost.
+      </p>
+      <p>
+        In the vast majority of cases, those emails still exist. They fail to appear in search results because
+        desktop email search relies on several interconnected layers, any one of which can exclude older messages:
+      </p>
+      <ul>
+        <li><strong>Offline Synchronization Limits:</strong> Outlook frequently downloads only recent email to your local hard drive based on available disk space. Messages older than the cutoff date remain on the mail server and require a server query to view.</li>
+        <li><strong>Restricted Search Scope:</strong> By default, Outlook may search only your current folder or current mailbox. If an old message was moved into a subfolder, an archive folder, or a separate data file, a single-folder search will skip it entirely.</li>
+        <li><strong>Separate Archive Storage:</strong> AutoArchive rules, personal <code>.pst</code> data files, and cloud-based Online Archives store messages in locations outside your primary inbox data file.</li>
+        <li><strong>Incomplete or Stalled Search Indexing:</strong> The local Windows Search catalog may have skipped older items, stopped responding, or excluded your archive data files from indexing.</li>
+        <li><strong>Organizational Retention Policies (MRM):</strong> In enterprise environments, corporate Messaging Records Management (MRM) retention policies may automatically archive or permanently delete emails older than a designated policy window (e.g., 2 years or 5 years), independent of your desktop settings.</li>
+        <li><strong>Account Protocol Differences:</strong> Microsoft Exchange, Microsoft 365, IMAP, and POP3 accounts handle message storage and synchronization in fundamentally different ways.</li>
+      </ul>
+      <p>
+        Rather than assuming your emails are gone or jumping directly to rebuilding your entire search index,
+        working methodically through the configuration steps below will help you identify exactly where your older messages are stored and make them searchable again.
+      </p>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="classic-vs-new">
+      <h2>2. Classic Outlook vs New Outlook</h2>
+      <p>
+        Before troubleshooting, it is essential to determine whether you are running <strong>Classic Outlook for Windows</strong>
+        or the modern <strong>New Outlook for Windows</strong>, because their search architectures and storage systems are completely different.
+      </p>
+
+      <h3>How to Identify Your Version</h3>
+      <ul>
+        <li><strong>Classic Outlook:</strong> Features traditional top ribbon tabs labeled <code>File</code>, <code>Home</code>, <code>Send / Receive</code>, and <code>View</code>. It stores email locally in <code>.ost</code> and <code>.pst</code> files and integrates directly with the local Windows Search indexing service.</li>
+        <li><strong>New Outlook:</strong> Does not have a traditional top-left <code>File</code> menu (it uses a <code>Settings</code> gear icon in the title bar). It runs as a modern web-based application (built on web technologies) and performs searches directly against Microsoft cloud servers without maintaining local desktop data files.</li>
+      </ul>
+
+      <div class="warning-box">
+        <strong>Important Distinction:</strong> The "Mail to keep offline" sync slider, local PST data files, and Windows Search indexing options discussed in this guide apply specifically to <strong>Classic Outlook</strong>. If you are using New Outlook, jump to our <a href="#faq">FAQ section</a> to understand how cloud-based search handles older messages.
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="cached-exchange-mode">
+      <h2>3. Check Cached Exchange Mode</h2>
+      <p>
+        In Classic Outlook, Microsoft Exchange and Microsoft 365 accounts can run in one of two fundamental operating modes:
+        <strong>Cached Exchange Mode</strong> or <strong>Online Mode</strong>.
+      </p>
+
+      <h3>Cached Exchange Mode vs. Online Mode</h3>
+      <ul>
+        <li><strong>Cached Exchange Mode (Recommended):</strong> Outlook saves a local copy of your mailbox on your computer inside an Offline Storage Table (<code>.ost</code>) file. You can read, compose, and search emails even when disconnected from the internet, and search queries return results almost instantly because they query your local drive.</li>
+        <li><strong>Online Mode:</strong> Outlook connects directly to the server for every action without storing a local cache. While this ensures you can always see every message currently on the server, search performance depends entirely on your network speed and server response time. Searching large mailboxes in Online Mode can be noticeably slower.</li>
+      </ul>
+
+      <h3>How to Verify Cached Exchange Mode Status</h3>
+      <ol>
+        <li>In Classic Outlook, click <strong>File</strong> in the top-left corner.</li>
+        <li>Select <strong>Account Settings</strong> &rarr; <strong>Account Settings...</strong>.</li>
+        <li>Under the <strong>Email</strong> tab, select your Exchange or Microsoft 365 account and click <strong>Change...</strong>.</li>
+        <li>Under <strong>Offline Settings</strong>, look for the checkbox labeled <strong>Use Cached Exchange Mode to download email to an Outlook data file</strong>.</li>
+      </ol>
+      <p>
+        If Cached Exchange Mode is enabled, the next critical setting that controls the availability of older messages is the sync duration slider directly underneath it.
+      </p>
+    </section>
+
+    <!-- Section 4 -->
+    <section id="mail-to-keep-offline">
+      <h2>4. Check "Mail to Keep Offline" Slider</h2>
+      <p>
+        The single most frequent reason older emails do not appear in instant search results is the
+        <strong>"Mail to keep offline"</strong> slider (labeled <em>"Download email for the past:"</em> in some versions).
+      </p>
+
+      <h3>How the Offline Sync Slider Works</h3>
+      <p>
+        To prevent local hard drives from running out of space, Microsoft Outlook adjusts the initial sync duration based on available storage: devices with 64 GB or smaller drives typically default to <strong>1 to 3 months</strong>, while systems with larger drives typically default to <strong>12 months (1 year)</strong>. Additionally, corporate IT administrators may override these settings across an organization using enterprise Group Policy.
+      </p>
+      <p>
+        When you run a search in Classic Outlook with an active sync window (such as 12 months), Outlook initially searches only the emails stored inside your local <code>.ost</code> file. Messages older than your configured cutoff date remain on the Microsoft 365 or Exchange server.
+      </p>
+
+      <h3>The "More on Microsoft Exchange" Prompt</h3>
+      <p>
+        When Outlook completes a local search and suspects older messages exist on the server, it displays a banner at the bottom of the message list:
+      </p>
+      <p>
+        <em>"Showing recent results... More results may be available on the server. Click here to view more on Microsoft Exchange."</em>
+      </p>
+      <p>
+        Clicking that prompt tells Outlook to execute a secondary, real-time query against the Exchange server, pulling older matches down temporarily. However, if you are offline or if you want older emails to appear in every search automatically, you need to expand your sync slider.
+      </p>
+
+      <h3>How to Adjust the Sync Slider</h3>
+      <ol>
+        <li>Click <strong>File</strong> &rarr; <strong>Account Settings</strong> &rarr; <strong>Account Settings...</strong>.</li>
+        <li>On the <strong>Email</strong> tab, double-click your email account (or select it and click <strong>Change...</strong>).</li>
+        <li>Find the slider labeled <strong>Download email for the past:</strong> (or <strong>Mail to keep offline</strong>).</li>
+        <li>Drag the slider to your desired time window: <code>3 days</code>, <code>1 month</code>, <code>3 months</code>, <code>6 months</code>, <code>1 year</code>, <code>2 years</code>, <code>3 years</code>, <code>5 years</code>, or <strong>All</strong>.</li>
+        <li>Click <strong>Next</strong>, then click <strong>Done</strong>.</li>
+        <li>Restart Outlook when prompted for the changes to take effect.</li>
+      </ol>
+
+      <div class="warning-box">
+        <strong>Storage Consideration:</strong> Moving the slider all the way to <strong>All</strong> forces Outlook to download your entire email history to your PC. If your mailbox contains 30 GB or 50 GB of data, this will consume an equivalent amount of SSD storage and may take several hours to synchronize and index. If local storage is limited, selecting <strong>2 years</strong> or <strong>3 years</strong> is often the most practical compromise.
+      </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section id="search-scope">
+      <h2>5. Expand Search Scope: "All Mailboxes" and "All Outlook Items"</h2>
+      <p>
+        Even when older emails are fully synchronized to your computer, Outlook may fail to show them simply because
+        it is searching the wrong folder.
+      </p>
+
+      <h3>Understanding Outlook Search Scopes</h3>
+      <p>
+        When you click into the Outlook search box at the top of the window, the <strong>Search</strong> tab appears on the ribbon.
+        In the <strong>Scope</strong> group, you will see several options:
+      </p>
+      <ul>
+        <li><strong>Current Folder:</strong> Searches only the specific folder you are currently viewing (e.g., your Inbox). If an older email was filed into a subfolder, an Archive folder, or your Sent Items, this search will not find it.</li>
+        <li><strong>Subfolders:</strong> Searches the active folder and any nested subfolders beneath it.</li>
+        <li><strong>Current Mailbox:</strong> Searches all folders across your entire active email account, including Deleted Items, Sent Items, and custom folders.</li>
+        <li><strong>All Mailboxes:</strong> Searches across every email account configured in your Outlook profile simultaneously.</li>
+        <li><strong>All Outlook Items:</strong> Searches all email accounts, calendars, contacts, tasks, and any mounted <code>.pst</code> archive data files.</li>
+      </ul>
+
+      <h3>How to Make Wider Search the Default</h3>
+      <p>
+        If you frequently misplace older emails across multiple folders, you can configure Outlook to search your entire mailbox or all mailboxes automatically every time you type a query:
+      </p>
+      <ol>
+        <li>Click <strong>File</strong> &rarr; <strong>Options</strong>.</li>
+        <li>In the left sidebar, click <strong>Search</strong>.</li>
+        <li>Under the <strong>Results</strong> heading, look for <em>"Include results only from:"</em>.</li>
+        <li>Select either <strong>Current mailbox</strong> or <strong>All mailboxes</strong> instead of <em>"Current folder"</em>.</li>
+        <li>Check the box labeled <strong>Include messages from the Deleted items folder in each data file when searching in All items</strong> if you wish to include deleted items.</li>
+        <li>Click <strong>OK</strong> to save your preference.</li>
+      </ol>
+    </section>
+
+    <!-- Section 6 -->
+    <section id="archives-and-pst">
+      <h2>6. Check Archive Folders and PST Files</h2>
+      <p>
+        As mailboxes grow, older emails are frequently separated into archive storage. Outlook uses three distinct types
+        of archives, each with different search behaviors:
+      </p>
+
+      <h3>1. The Built-in "Archive" One-Click Folder</h3>
+      <p>
+        Modern versions of Classic Outlook include a default folder called <strong>Archive</strong> right below your Inbox.
+        When you press the <kbd>Backspace</kbd> key or click the <em>Archive</em> button on the Home ribbon, Outlook moves the selected email into this folder.
+      </p>
+      <p>
+        This is simply a regular folder inside your primary mailbox (OST). It is subject to the same "Mail to keep offline" sync slider as your Inbox. If you cannot find an archived email, check this folder directly or switch your search scope to <strong>Current Mailbox</strong>.
+      </p>
+
+      <h3>2. Local AutoArchive Personal Storage Files (<code>.pst</code>)</h3>
+      <p>
+        If your organization or previous Outlook setup used <strong>AutoArchive</strong>, older emails may have been moved out of your primary Exchange mailbox into a local <code>.pst</code> file stored on your hard drive (often named <code>archive.pst</code>).
+      </p>
+      <ul>
+        <li><strong>Confirm the Data File is Open:</strong> Go to <strong>File</strong> &rarr; <strong>Account Settings</strong> &rarr; <strong>Account Settings...</strong> &rarr; <strong>Data Files</strong> tab. Verify whether your archive data file is listed.</li>
+        <li><strong>Reopen a Closed PST:</strong> If an archive file was closed or unmounted, its contents cannot be searched. Reconnect it by clicking <strong>File</strong> &rarr; <strong>Open &amp; Export</strong> &rarr; <strong>Open Outlook Data File (.pst)</strong> and browsing to your archive file.</li>
+      </ul>
+
+      <h3>3. Microsoft 365 Online Archive (In-Place Archive)</h3>
+      <p>
+        In business and enterprise Microsoft 365 environments, administrators often enable an <strong>Online Archive</strong> (also known as an In-Place Archive). This appears in your Outlook folder pane as a separate top-level mailbox (e.g., <em>"Online Archive - user@domain.com"</em>).
+      </p>
+      <p>
+        Unlike local PST files, an Online Archive resides strictly in the cloud and never caches data to your local hard drive. A standard search in your primary Inbox does not query the Online Archive unless you select that archive mailbox in the folder pane or choose <strong>All Outlook Items</strong> while connected to the internet.
+      </p>
+    </section>
+
+    <!-- Section 7 -->
+    <section id="verify-indexing">
+      <h2>7. Verify Outlook Indexing and Data File Locations</h2>
+      <p>
+        Even if your older emails are synchronized locally and your archive PST files are mounted, Outlook cannot display them
+        instantly if the Windows Search service has not cataloged those items or if data files were excluded from indexing.
+      </p>
+
+      <h3>Check Indexing Status</h3>
+      <p>
+        In Classic Outlook, clicking into the search box at the top of the window automatically reveals the <strong>Search</strong> tab on the ribbon. From there, select <strong>Search Tools</strong> &rarr; <strong>Indexing Status</strong>. (Note: If you use the Simplified Ribbon or a compact window layout, click the three dots <code>...</code> overflow menu on the far right of the Search ribbon to locate <em>Search Tools</em>).
+      </p>
+      <p>
+        If Outlook displays <em>"Outlook has finished indexing all items"</em>, the local catalog is complete. If it shows items remaining, Windows is still processing your messages in the background.
+      </p>
+      <p>
+        If the counter never decreases, review our detailed guide on <a href="/outlook-indexing-stuck">how to resolve stuck Outlook indexing</a> for step-by-step service checks.
+      </p>
+
+      <h3>Ensure All Data Files and PST Archives Are Included</h3>
+      <ol>
+        <li>In Classic Outlook, go to <strong>File</strong> &rarr; <strong>Options</strong> &rarr; <strong>Search</strong>.</li>
+        <li>Click the <strong>Indexing Options...</strong> button.</li>
+        <li>In the Indexing Options dialog, click <strong>Modify</strong>.</li>
+        <li>Under <em>Change selected locations</em>, ensure that <strong>Microsoft Outlook</strong> is checked.</li>
+        <li>Expand the <strong>Microsoft Outlook</strong> node to verify that all configured mailboxes and connected archive <code>.pst</code> files are individually checked.</li>
+        <li>Click <strong>OK</strong> and close the dialogs.</li>
+      </ol>
+      <p>
+        For general search issues beyond missing older items, you can also consult our comprehensive <a href="/outlook-search-not-working">Outlook search troubleshooting guide</a>.
+      </p>
+    </section>
+
+    <!-- Section 8: Contextual Product -->
+    <section id="alternative-search">
+      <h2>8. When an Alternative Desktop Search Tool May Help</h2>
+      <p>
+        For most professionals, adjusting the offline sync slider, widening the search scope, and verifying indexing locations
+        solves missing email issues. However, certain heavy-use scenarios place exceptional strain on default desktop search:
+      </p>
+      <ul>
+        <li><strong>Multi-Year Archives:</strong> Professionals with 5, 10, or 15+ years of email history across multiple PST files often find that downloading decades of messages bloats the single central Windows Search database.</li>
+        <li><strong>Frequent Index Resets:</strong> Major Windows feature updates or system crashes can occasionally corrupt the centralized Windows Search index, triggering hours or days of rebuilding across all local drives.</li>
+        <li><strong>Dedicated Email Indexing:</strong> Some users prefer maintaining an isolated search index dedicated exclusively to their email communications, decoupled from general operating system file search.</li>
+      </ul>
+
+      <div class="callout-box">
+        <h3>About MailPilot Email Search</h3>
+        <p>
+          If you regularly manage large email archives in Classic Outlook and want dedicated desktop search performance,
+          you can explore <strong>MailPilot</strong>.
+        </p>
+        <ul>
+          <li><strong>Independent Local Index:</strong> MailPilot connects to your locally installed Classic Microsoft Outlook profile via COM/MAPI and maintains an independent local SQLite database (<code>%LocalAppData%\MailPilot\MailPilot.db</code>) with full-text search, operating separately from the Windows Search catalog.</li>
+          <li><strong>Local-First Architecture:</strong> All indexing and search operations run on your local device. Email content, headers, and search queries are never uploaded to external cloud search services.</li>
+          <li><strong>Official Microsoft Store Distribution:</strong> MailPilot is distributed and verified through the Microsoft Store, providing clean installation and updates without modifying your underlying Outlook mail files.</li>
+          <li><strong>System Requirement:</strong> MailPilot requires Classic desktop Microsoft Outlook on Windows 10 or Windows 11 (it does not support web-based New Outlook).</li>
+        </ul>
+        <p style="margin-top: 16px;">
+          <em>Note:</em> Because MailPilot operates as a local desktop application reading local Outlook MAPI data, it indexes emails present in your local Outlook profile and data files (OST and PST). If older messages remain on the server due to a restricted sync slider, you should expand your sync slider or download them to enable local desktop search.
+        </p>
+        <p>
+          <a class="button" href="https://apps.microsoft.com/detail/9NQJ7DNG3503" target="_blank" rel="noopener noreferrer">
+            View MailPilot in Microsoft Store
+          </a>
+          <a class="button secondary" href="/" style="margin-left: 10px;">
+            Learn More on Homepage
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 9: FAQ -->
+    <section id="faq">
+      <h2>9. Frequently Asked Questions</h2>
+
+      <h3>Why does Outlook only search emails from the past 12 months?</h3>
+      <p>
+        Microsoft Outlook configures Cached Exchange Mode with an offline sync slider to conserve local disk space. On systems with larger drives, Outlook typically defaults to 12 months (1 year), while devices with 64 GB or less often default to 1 to 3 months, and enterprise Group Policy may enforce custom organizational limits. When this setting is active, emails older than the sync window remain on the Exchange or Microsoft 365 server and are not stored in your local OST file. You can search them by clicking 'Click here to view more on Microsoft Exchange' at the bottom of your search results, or by moving the slider to 2 years, 3 years, or All in Account Settings.
+      </p>
+
+      <h3>Where do archived emails go in Outlook, and can they be searched?</h3>
+      <p>
+        Where archived emails reside depends on the archive method used: 1) The one-click 'Archive' folder is simply a standard folder inside your primary mailbox OST and is subject to your offline sync slider. 2) AutoArchive moves items to a separate local PST file on your hard drive, which must remain opened and mounted in Outlook to appear in searches. 3) Microsoft 365 Online Archive (In-Place Archive) lives entirely in the cloud as a separate mailbox in your folder pane and must be searched specifically or with search scope set to All Outlook Items.
+      </p>
+
+      <h3>Why can't I find old emails in New Outlook for Windows?</h3>
+      <p>
+        New Outlook for Windows does not use local OST data files or the 'Mail to keep offline' sync slider. Instead, all searches run server-side across Microsoft 365 cloud infrastructure. Missing old emails in New Outlook are usually caused by search folder scope (searching only the current folder instead of All Folders), active search filters, or organizational mailbox retention policies set by your IT administrator that automatically delete or archive older messages.
+      </p>
+
+      <h3>Will increasing 'Mail to keep offline' to 'All' slow down my computer?</h3>
+      <p>
+        Setting the slider to 'All' instructs Outlook to download your complete mailbox history to your local hard drive. If your mailbox contains tens of thousands of messages or tens of gigabytes of data, initial synchronization and indexing will consume significant disk space, network bandwidth, and background processing power. For mailboxes larger than 25 GB on systems with limited SSD storage, setting the slider to 2 or 3 years often provides an ideal balance between search depth and system performance.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="header-inner">
+      <p><strong>MailPilot</strong> &mdash; Email search and productivity software for Windows.</p>
+      <p>
+        <a href="/">Home</a>
+        <a href="/outlook-search-not-working">Outlook Search Guide</a>
+        <a href="/outlook-indexing-stuck">Indexing Troubleshooting</a>
+        <a href="/privacy">Privacy Policy</a>
+      </p>
+      <p style="margin-top: 14px; font-size: 13px; color: var(--muted);">
+        Outlook is a registered trademark of Microsoft Corporation. This website is independent and not affiliated with or endorsed by Microsoft.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
