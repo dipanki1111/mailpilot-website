@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Outlook Indexing Stuck or Rebuilding Too Slowly? 6 Ways to Fix It</title>
+  <meta name="description" content="Is your Outlook search index stuck, frozen, or taking too long to rebuild? Follow these practical diagnostic steps for Windows Search and Classic Outlook.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mailpilot-website.pages.dev/outlook-indexing-stuck">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:title" content="Outlook Indexing Stuck or Rebuilding Too Slowly? 6 Ways to Fix It">
+  <meta property="og:description" content="Is your Outlook search index stuck, frozen, or taking too long to rebuild? Follow these practical diagnostic steps for Windows Search and Classic Outlook.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mailpilot-website.pages.dev/outlook-indexing-stuck">
+  <meta property="og:image" content="https://mailpilot-website.pages.dev/favicon.svg">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Outlook Indexing Stuck or Rebuilding Too Slowly? 6 Ways to Fix It">
+  <meta name="twitter:description" content="Is your Outlook search index stuck, frozen, or taking too long to rebuild? Follow these practical diagnostic steps for Windows Search and Classic Outlook.">
+  <meta name="twitter:image" content="https://mailpilot-website.pages.dev/favicon.svg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I know if Outlook indexing is genuinely stuck?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Classic Outlook, click into the search box, select Search Tools > Indexing Status. If the message says 'There are X items remaining to be indexed' and that number does not decrease after leaving your computer idle and plugged in for several hours, indexing may be paused, stalled, or encountering a problem with the Windows Search service."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does Outlook indexing pause automatically?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "By default, Windows Search intentionally throttles or pauses indexing while you are actively using your computer, typing, running high-CPU applications, or operating on laptop battery power to prevent system sluggishness. Indexing resumes when the computer is idle and connected to AC power."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does rebuilding the search index delete my emails?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Rebuilding the search index only deletes and re-creates the Windows Search catalog. Your actual email messages, folders, and local data files (OST or PST) remain intact. However, search results across Windows and Outlook will be incomplete until the indexer finishes cataloging your data."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does New Outlook for Windows use the Windows Search indexing service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. New Outlook for Windows is a modern web-based application that relies on server-side search through Microsoft 365 cloud services. The local Windows Search service, Indexing Options in Control Panel, and index rebuild tools apply specifically to Classic Outlook desktop."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --navy: #12305a;
+      --blue: #1768ac;
+      --blue-hover: #125287;
+      --text: #263449;
+      --muted: #58677c;
+      --background: #f5f8fc;
+      --border: #dce5f0;
+      --white: #ffffff;
+      --warning-bg: #fff8e8;
+      --warning-border: #e7a526;
+      --warning-text: #744210;
+      --callout-bg: #edf5ff;
+      --callout-border: #b8d7ff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      color: var(--text);
+      background: var(--background);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 30px 24px 38px;
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .brand-link {
+      display: inline-block;
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 22px;
+      text-decoration: none;
+      margin-bottom: 16px;
+    }
+    .breadcrumb {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .breadcrumb a:hover { text-decoration: underline; }
+    header h1 {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: clamp(28px, 4.5vw, 42px);
+      line-height: 1.22;
+      letter-spacing: -0.5px;
+    }
+    header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    main {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 20px;
+    }
+    nav.toc, section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px 30px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(18, 48, 90, 0.04);
+    }
+    h2 {
+      color: var(--navy);
+      font-size: 24px;
+      line-height: 1.35;
+      margin: 0 0 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+    h3 {
+      color: var(--navy);
+      font-size: 18px;
+      margin: 22px 0 8px;
+    }
+    p { margin: 12px 0; }
+    ul, ol { padding-left: 24px; margin: 12px 0; }
+    li { margin: 8px 0; }
+    a { color: var(--blue); }
+    a:hover { color: var(--blue-hover); }
+    code {
+      background: #eef3f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 14px;
+      color: #1a355e;
+    }
+    .warning-box {
+      background: var(--warning-bg);
+      border-left: 4px solid var(--warning-border);
+      color: var(--warning-text);
+      padding: 16px 18px;
+      border-radius: 6px;
+      margin: 18px 0;
+      font-size: 15px;
+    }
+    .warning-box strong { color: #522e06; }
+    .callout-box {
+      background: var(--callout-bg);
+      border: 1px solid var(--callout-border);
+      padding: 22px 24px;
+      border-radius: 10px;
+      margin: 24px 0;
+    }
+    .callout-box h3 { margin-top: 0; color: var(--navy); }
+    .button {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      padding: 11px 20px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+    .button:hover {
+      background: var(--blue-hover);
+      color: var(--white);
+    }
+    .button.secondary {
+      background: var(--white);
+      color: var(--blue);
+      border: 1px solid var(--border);
+    }
+    .button.secondary:hover {
+      background: #f0f4fa;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 36px 20px;
+      font-size: 14px;
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      margin-top: 48px;
+    }
+    footer a { margin: 0 10px; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      header { padding: 22px 18px; }
+      nav.toc, section { padding: 20px 18px; }
+      h2 { font-size: 21px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a class="brand-link" href="/">MailPilot</a>
+      <div class="breadcrumb">
+        <a href="/">Home</a> &rsaquo;
+        <a href="/outlook-search-not-working">Outlook Search Help</a> &rsaquo;
+        <span>Indexing Troubleshooting</span>
+      </div>
+      <h1>Outlook Indexing Stuck or Rebuilding Too Slowly? 6 Ways to Fix It</h1>
+      <p>
+        When Outlook search returns incomplete results or displays "0 items remaining" for hours,
+        Windows Search indexing may be paused or corrupted. Here is how to diagnose and resolve it step by step.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <nav class="toc" aria-label="Table of Contents">
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#classic-vs-new">First: Check whether you use Classic Outlook or New Outlook</a></li>
+        <li><a href="#check-status">1. Check your actual Outlook indexing status</a></li>
+        <li><a href="#windows-search-service">2. Verify the Windows Search service status</a></li>
+        <li><a href="#indexing-options">3. Verify Outlook in Indexing Options</a></li>
+        <li><a href="#troubleshooter">4. Run the Windows Search and Indexing Troubleshooter</a></li>
+        <li><a href="#rebuild-index">5. How to rebuild the Windows Search index</a></li>
+        <li><a href="#office-repair">6. Repair Microsoft 365 or Office installation</a></li>
+        <li><a href="#alternative-search">When to consider an independent local email search tool</a></li>
+        <li><a href="#faq">Frequently asked questions</a></li>
+      </ul>
+    </nav>
+
+    <!-- Version Distinction -->
+    <section id="classic-vs-new">
+      <h2>First: Check Classic Outlook vs. New Outlook</h2>
+      <p>
+        Before attempting indexing repairs, confirm which version of Outlook you are running.
+        Their underlying search systems are fundamentally different:
+      </p>
+      <ul>
+        <li>
+          <strong>Classic Outlook for Windows:</strong>
+          Features the traditional menu bar (File, Home, Send / Receive). It relies on the local
+          <strong>Windows Search service</strong> (<code>WSearch</code>) to build and maintain an index
+          of your messages in local data files (OST or PST). The indexing troubleshooting steps below apply
+          specifically to this version.
+        </li>
+        <li>
+          <strong>New Outlook for Windows:</strong>
+          Has a modern web-like interface with a toggle labeled "New Outlook" in the top-right corner.
+          New Outlook uses Microsoft 365 server-side search in the cloud and does <em>not</em> interact with
+          the local Windows Search indexer or the Indexing Options dialog in Windows Control Panel.
+          If search fails in New Outlook, verify your internet connection, account sync, and Microsoft service health.
+        </li>
+      </ul>
+      <p>
+        For broader search troubleshooting across both versions, see our main guide:
+        <a href="/outlook-search-not-working">Outlook Search Not Working? 7 Fixes That May Help</a>.
+      </p>
+    </section>
+
+    <!-- Step 1: Check Indexing Status -->
+    <section id="check-status">
+      <h2>1. Check Your Actual Outlook Indexing Status</h2>
+      <p>
+        Before changing any Windows settings, check whether Outlook reports that indexing is actively
+        in progress, finished, or paused.
+      </p>
+      <h3>Navigation Steps:</h3>
+      <ol>
+        <li>Open Classic Outlook.</li>
+        <li>Click into the search box at the top of the window (or press <code>Ctrl + E</code>).</li>
+        <li>On the ribbon, the <strong>Search</strong> tab will appear.</li>
+        <li>Click <strong>Search Tools &rarr; Indexing Status</strong> (or Search Options in some builds).</li>
+      </ol>
+      <h3>What to Expect:</h3>
+      <ul>
+        <li>
+          If it displays <em>"Outlook has finished indexing all your items"</em>, Outlook believes the catalog
+          is complete. If search queries still fail, the index itself may be corrupted or your search scope
+          may be restricted.
+        </li>
+        <li>
+          If it displays <em>"There are X items remaining to be indexed"</em>, Outlook is still working through
+          your mailboxes.
+        </li>
+      </ul>
+      <div class="warning-box">
+        <strong>Why Indexing Throttles:</strong>
+        Windows Search is designed to pause or slow down automatically when your computer is actively in use,
+        when CPU usage is high, or when running on battery power. Leave your computer connected to AC power
+        and idle for 30 to 60 minutes to determine whether the count decreases.
+      </div>
+      <p>
+        <strong>When to proceed:</strong> If the count remains completely unchanged after an extended idle period,
+        proceed to verify the background search service.
+      </p>
+    </section>
+
+    <!-- Step 2: Windows Search Service -->
+    <section id="windows-search-service">
+      <h2>2. Verify the Windows Search Service Status</h2>
+      <p>
+        Classic Outlook depends on the background Windows Search service to index local files.
+        If this service has stopped, crashed, or been disabled, Outlook cannot index new items.
+      </p>
+      <h3>Navigation Steps:</h3>
+      <ol>
+        <li>Press <code>Win + R</code> to open the Run dialog.</li>
+        <li>Type <code>services.msc</code> and press <strong>Enter</strong>.</li>
+        <li>Scroll down the list to locate <strong>Windows Search</strong>.</li>
+        <li>Check the <strong>Status</strong> and <strong>Startup Type</strong> columns.</li>
+      </ol>
+      <h3>What to Expect & Recommended Settings:</h3>
+      <ul>
+        <li><strong>Status:</strong> Should be <code>Running</code>. If blank or Stopped, right-click and select <strong>Start</strong>.</li>
+        <li><strong>Startup Type:</strong> Should be <code>Automatic (Delayed Start)</code> or <code>Automatic</code>. If it is Disabled, right-click, select <strong>Properties</strong>, change the Startup Type to Automatic (Delayed Start), and click <strong>Apply</strong>.</li>
+      </ul>
+      <p>
+        <strong>When to proceed:</strong> If the service is running properly but Outlook still shows indexing
+        stuck, inspect whether Outlook is included in the indexing catalog.
+      </p>
+    </section>
+
+    <!-- Step 3: Indexing Options -->
+    <section id="indexing-options">
+      <h2>3. Verify Outlook in Windows Indexing Options</h2>
+      <p>
+        Windows Search maintains a list of specific locations to catalog. If Microsoft Outlook is unselected
+        or unchecked, messages will not be added to the search catalog.
+      </p>
+      <h3>Navigation Steps:</h3>
+      <ol>
+        <li>Press <code>Win + S</code> and type <code>Indexing Options</code>, then press <strong>Enter</strong> (or open Control Panel and click Indexing Options).</li>
+        <li>In the Indexing Options window, look under <strong>Included Locations</strong>.</li>
+        <li>Check whether <strong>Microsoft Outlook</strong> is listed.</li>
+        <li>If Outlook is missing, click <strong>Modify</strong> at the bottom.</li>
+        <li>In the Indexed Locations dialog, check the box next to <strong>Microsoft Outlook</strong>, then click <strong>OK</strong>.</li>
+      </ol>
+      <h3>What to Expect:</h3>
+      <p>
+        Outlook should now appear in the list of indexed locations. Windows will begin indexing Outlook items
+        in the background.
+      </p>
+      <div class="warning-box">
+        <strong>If Outlook is Greyed Out or Missing:</strong>
+        If Microsoft Outlook cannot be selected in the Indexing Options dialog, the Outlook MAPI protocol
+        registration or Windows Search registry association may be damaged. In this case, running the
+        Office Repair utility (Step 6) is the standard Microsoft-recommended solution.
+      </div>
+    </section>
+
+    <!-- Step 4: Windows Troubleshooter -->
+    <section id="troubleshooter">
+      <h2>4. Run the Search and Indexing Troubleshooter</h2>
+      <p>
+        Windows includes an automated diagnostic tool that checks search permissions, service states,
+        and database integrity.
+      </p>
+      <h3>Navigation Steps:</h3>
+      <ol>
+        <li>Open Windows <strong>Settings</strong> (<code>Win + I</code>).</li>
+        <li>Navigate to <strong>System &rarr; Troubleshoot &rarr; Other troubleshooters</strong> (in Windows 11) or <strong>Update &amp; Security &rarr; Troubleshoot &rarr; Additional troubleshooters</strong> (in Windows 10 versions 20H2 and newer; on earlier builds, troubleshooters appear directly under Troubleshoot).</li>
+        <li>Find <strong>Search and Indexing</strong> and click <strong>Run</strong>.</li>
+        <li>Select the problems you are experiencing, such as <em>"Outlook search doesn't return results"</em> or <em>"Search or indexing is slowing down the computer"</em>, and follow the on-screen prompts.</li>
+      </ol>
+      <h3>What to Expect:</h3>
+      <p>
+        The troubleshooter checks whether the search service is responding and resets permissions if
+        system folders have incorrect access controls.
+      </p>
+    </section>
+
+    <!-- Step 5: Rebuild Index -->
+    <section id="rebuild-index">
+      <h2>5. How to Rebuild the Windows Search Index</h2>
+      <p>
+        If your search index is corrupted or stuck at a fixed number of items, rebuilding the catalog
+        clears the existing database and regenerates it from scratch.
+      </p>
+      <div class="warning-box">
+        <strong>Important Warning Before Rebuilding:</strong>
+        Rebuilding the index does not delete your emails or files, but it temporarily removes all search
+        capabilities. While the rebuild is active, Outlook search and Windows file search will return incomplete
+        or zero results. Depending on the size of your mailbox and system speed, indexing can take several hours.
+        Plan this step during a time when you do not need immediate search results.
+      </div>
+      <h3>Navigation Steps:</h3>
+      <ol>
+        <li>Open <strong>Indexing Options</strong> from the Start Menu or Control Panel.</li>
+        <li>Click the <strong>Advanced</strong> button (requires Windows Administrator access).</li>
+        <li>In the Advanced Options dialog, locate the <strong>Troubleshooting</strong> section.</li>
+        <li>Click <strong>Rebuild</strong>.</li>
+        <li>A confirmation message will state: <em>"Rebuilding the index might take a long time to complete. Some views and search results might be incomplete until rebuilding is finished."</em></li>
+        <li>Click <strong>OK</strong> to confirm.</li>
+      </ol>
+      <h3>What to Expect:</h3>
+      <p>
+        The top of the Indexing Options dialog will change to <em>"Indexing in progress..."</em>.
+        Keep your computer connected to AC power and consider temporarily adjusting your Windows Sleep timeout
+        (under <strong>Settings &rarr; System &rarr; Power &amp; sleep</strong>) so the PC remains awake while initial
+        cataloging progresses. When a computer enters sleep or low-power state, Windows pauses indexing activity,
+        which can prolong the rebuild time. Keeping the system awake does not guarantee an immediate resolution,
+        but it prevents background indexing from being repeatedly paused.
+      </p>
+    </section>
+
+    <!-- Step 6: Repair Office -->
+    <section id="office-repair">
+      <h2>6. Repair Microsoft 365 or Office Installation</h2>
+      <p>
+        If rebuilding the index does not resolve the issue, local Outlook program files, registry registrations,
+        or COM components may be corrupted. Running an Office repair restores core Outlook search integration.
+      </p>
+      <h3>Navigation Steps:</h3>
+      <ol>
+        <li>Close Outlook completely.</li>
+        <li>Open Windows <strong>Settings</strong> and click <strong>Apps &rarr; Installed apps</strong> in Windows 11 (or <strong>Apps &rarr; Apps &amp; features</strong> in Windows 10, or Programs and Features in Control Panel).</li>
+        <li>Locate <strong>Microsoft 365</strong>, <strong>Microsoft Office</strong>, or <strong>Outlook</strong> in the list.</li>
+        <li>Click the three dots (or right-click) and select <strong>Modify</strong>.</li>
+        <li>Choose <strong>Quick Repair</strong> first. This checks for and replaces corrupted files quickly without requiring an internet connection.</li>
+        <li>If Quick Repair fails to resolve the issue, run <strong>Online Repair</strong>. Note that Online Repair performs a more thorough reinstallation and requires an active internet connection.</li>
+      </ol>
+      <p>
+        After the repair finishes, restart your computer, open Outlook, and check Search Tools &rarr; Indexing Status.
+      </p>
+    </section>
+
+    <!-- Contextual Product Section -->
+    <section id="alternative-search">
+      <h2>When to Consider an Alternative Desktop Email Search Tool</h2>
+      <p>
+        For most users, standard Windows Search maintenance resolves temporary indexing hiccups.
+        However, there are scenarios where built-in Windows indexing repeatedly struggles:
+      </p>
+      <ul>
+        <li><strong>Very Large Mailbox Stores:</strong> Mailboxes with tens of thousands of messages can put heavy demands on the single shared Windows Search database.</li>
+        <li><strong>Repeated Index Corruption:</strong> System updates or unexpected shutdowns can occasionally cause the central Windows search catalog to reset, requiring repeated lengthy rebuilds.</li>
+        <li><strong>Independent Indexing Needs:</strong> Some professionals prefer to maintain an isolated search index dedicated strictly to their email, completely decoupled from general Windows file search.</li>
+      </ul>
+
+      <div class="callout-box">
+        <h3>About MailPilot Email Search</h3>
+        <p>
+          If you regularly experience indexing issues in Classic Outlook, you can explore
+          <strong>MailPilot</strong> as a standalone email search tool.
+        </p>
+        <ul>
+          <li><strong>Independent Local Index:</strong> MailPilot connects to your locally installed Classic Microsoft Outlook profile via COM/MAPI and maintains an independent local SQLite database (<code>%LocalAppData%\MailPilot\MailPilot.db</code>) on your computer, operating separately from the Windows Search catalog.</li>
+          <li><strong>Local-First Architecture:</strong> All indexing and search operations run on your local device. Email content, headers, and search queries are not transmitted to cloud search services.</li>
+          <li><strong>Microsoft Store Distribution:</strong> MailPilot is distributed and verified through the official Microsoft Store, ensuring clean installation and updates without modifying your underlying Outlook mail files.</li>
+          <li><strong>Compatibility Requirement:</strong> MailPilot requires the Classic desktop version of Microsoft Outlook on Windows 10 or Windows 11 (it does not support web-based New Outlook).</li>
+        </ul>
+        <p>
+          <a class="button" href="https://apps.microsoft.com/detail/9NQJ7DNG3503" target="_blank" rel="noopener noreferrer">
+            View MailPilot in Microsoft Store
+          </a>
+          <a class="button secondary" href="/" style="margin-left: 10px;">
+            Learn More on Homepage
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>How do I know if Outlook indexing is genuinely stuck?</h3>
+      <p>
+        In Classic Outlook, click into the search box, select <strong>Search Tools &rarr; Indexing Status</strong>.
+        If the message says <em>"There are X items remaining to be indexed"</em> and that number does not decrease
+        after leaving your computer idle and plugged in for several hours, indexing may be paused, stalled,
+        or encountering a problem with the Windows Search service.
+      </p>
+
+      <h3>Why does Outlook indexing pause automatically?</h3>
+      <p>
+        By default, Windows Search intentionally throttles or pauses indexing while you are actively using
+        your computer, typing, running high-CPU applications, or operating on laptop battery power to prevent
+        system sluggishness. Indexing resumes when the computer is idle and connected to AC power.
+      </p>
+
+      <h3>Does rebuilding the search index delete my emails?</h3>
+      <p>
+        No. Rebuilding the search index only deletes and re-creates the Windows Search catalog. Your actual
+        email messages, folders, and local data files (OST or PST) remain intact. However, search results across
+        Windows and Outlook will be incomplete until the indexer finishes cataloging your data.
+      </p>
+
+      <h3>Does New Outlook for Windows use the Windows Search indexing service?</h3>
+      <p>
+        No. New Outlook for Windows is a modern web-based application that relies on server-side search through
+        Microsoft 365 cloud services. The local Windows Search service, Indexing Options in Control Panel, and
+        index rebuild tools apply specifically to Classic Outlook desktop.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="header-inner">
+      <p><strong>MailPilot</strong> &mdash; Email search and productivity software for Windows.</p>
+      <p>
+        <a href="/">Home</a>
+        <a href="/outlook-search-not-working">Outlook Search Guide</a>
+        <a href="/privacy">Privacy Policy</a>
+      </p>
+      <p style="margin-top: 14px; font-size: 13px; color: var(--muted);">
+        Outlook is a registered trademark of Microsoft Corporation. This website is independent and not affiliated with or endorsed by Microsoft.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
